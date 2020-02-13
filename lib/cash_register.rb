@@ -8,7 +8,7 @@ class CashRegister
     @total = 0
     @discount = discount
     @items = []
-    @last_item = nil
+    @last_item = 0
   end
 
   def discount
@@ -20,14 +20,10 @@ class CashRegister
   end
 
   def add_item(title, price, quantity=1)
-    self.last_item(price, quantity)
-    @total += (price * quantity)
-    array_titles = Array.new(quantity, title)
-    array_titles.each { |item_title| @items << item_title }
-  end
-
-  def last_item(price, quanitity)
     @last_item = price * quantity
+    self.total += (price * quantity)
+    array_titles = Array.new(quantity, title)
+    array_titles.each { |item_title| self.items << item_title }
   end
 
   def apply_discount
@@ -44,7 +40,7 @@ class CashRegister
   end
 
   def void_last_transaction
-    self.total -= self.last_item
+    self.total -= @last_item
   end
 
 
