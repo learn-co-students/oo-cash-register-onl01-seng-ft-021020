@@ -21,15 +21,15 @@ class CashRegister
 
   def add_item(title, price, quantity=1)
     @last_item = price * quantity
-    self.total += (price * quantity)
+    @total += (price * quantity)
     array_titles = Array.new(quantity, title)
-    array_titles.each { |item_title| self.items << item_title }
+    array_titles.each { |item_title| @items << item_title }
   end
 
   def apply_discount
-    if self.discount != 
-      self.total = (self.total - (self.total * (self.discount.to_f/100))).to_i
-      "After the discount, the total comes to $#{self.total}."
+    if @discount != 
+      @total = (@total - (@total * (@discount.to_f/100))).to_i
+      "After the discount, the total comes to $#{@total}."
     else
       "There is no discount to apply."
     end
@@ -40,7 +40,7 @@ class CashRegister
   end
 
   def void_last_transaction
-    self.total -= @last_item
+    @total -= @last_item
   end
 
 
