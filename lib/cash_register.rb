@@ -21,10 +21,10 @@ class CashRegister
         if @discount > 0
             multiplier = (100.0 - @discount)/100
             discount_total = @total * multiplier
-            @total = discount_total.round
-            return "After the discount, the total comes to $#{@total}."
+            @total = discount_total.to_i
+            "After the discount, the total comes to $#{@total}."
         else
-            return "There is no discount to apply."
+            "There is no discount to apply."
         end
     end
 
